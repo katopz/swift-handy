@@ -26,7 +26,7 @@ let json = JSON(data:string.dataUsingEncoding(NSUTF8StringEncoding)!)
 ```swift
 // Note to self : Complex use
 Defaults["bar"] = NSKeyedArchiver.archivedDataWithRootObject([100:"foo", 2:"b", 3:["foo":"bar"]])
-var bar: AnyObject? = NSKeyedUnarchiver.unarchiveObjectWithData(Defaults["bar"].data!)
+let bar: AnyObject? = NSKeyedUnarchiver.unarchiveObjectWithData(Defaults["bar"].data!)
 println(bar)
 ```
 
