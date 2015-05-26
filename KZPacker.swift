@@ -1,9 +1,9 @@
 //
 //  KZPacker.swift
-//  Haneke
+//  swift-handy
 //
-//  Created by katopz on 5/26/2558 BE.
-//  Copyright (c) 2558 Haneke. All rights reserved.
+//  Created by katopz on 5/19/2558 BE.
+//  Copyright (c) 2558 Debokeh. All rights reserved.
 //
 
 import Foundation
