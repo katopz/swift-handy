@@ -74,6 +74,6 @@ println("remove : " + key)
 KZPacker.remove(key)
 
 if let del_data = KZPacker.unpack(key) as? [Int:String] {
-    println(" This should be seen : \(del_data)")
+    println(" This should not be seen : \(del_data)")
 }
 ```
