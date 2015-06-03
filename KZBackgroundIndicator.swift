@@ -10,14 +10,17 @@ import Foundation
 
 class KZBackgroundIndicator: UIView {
     
-    static var _old_backgroundColor:UIColor?
+    static var _maps:[UIView:UIColor] = [UIView:UIColor]()
     static var _new_backgroundColor:UIColor?
     
     static var _isPlay:Bool = false
     
     static func startAnimation(target:UIView, color:UIColor) {
         
-        _old_backgroundColor = target.backgroundColor
+        if(_maps[target] == nil) {
+            _maps[target] = target.backgroundColor
+        }
+        
         _new_backgroundColor = color
         
         _isPlay = true
@@ -31,7 +34,7 @@ class KZBackgroundIndicator: UIView {
                 if(self._isPlay) {
                     UIView.animateWithDuration(0.5, delay: 0, options:.CurveEaseOut, animations: {
                         
-                        target.backgroundColor = self._old_backgroundColor
+                        target.backgroundColor = self._maps[target]
                         
                         }, completion: {finished in
                             
@@ -47,15 +50,19 @@ class KZBackgroundIndicator: UIView {
         
         _isPlay = false
         
-        UIView.animateWithDuration(0.25, delay: 0, options:.CurveEaseOut, animations: {
+        if self._maps[target] == nil {
+            return
+        }
+        
+        UIView.animateWithDuration(0.5, delay: 0, options:.CurveEaseOut, animations: {
             
-            target.backgroundColor = self._old_backgroundColor
+            target.backgroundColor = self._maps[target]
             
             }, completion: {finished in
                 //
         })
         
-        _old_backgroundColor = nil
+        self._maps[target] = nil
         _new_backgroundColor = nil
     }
 }
