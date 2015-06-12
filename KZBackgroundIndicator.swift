@@ -17,6 +17,11 @@ class KZBackgroundIndicator: UIView {
     
     static func startAnimation(target:UIView, color:UIColor) {
         
+        // already play
+        if(_isPlay) {
+            return
+        }
+        
         if(_maps[target] == nil) {
             _maps[target] = target.backgroundColor
         }
