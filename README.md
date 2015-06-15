@@ -1,6 +1,22 @@
 # swift-handy
 Handy Swift Helper belong here, Including my unfinish/use at risk helper.
 
+### CocoaPods
+* Create `Podfile`
+```shell
+platform :ios, '8.0'
+use_frameworks!
+
+pod 'Signals', '~> 1.0'
+```
+and then 
+```shell
+$ pod install
+```
+
+### Signals
+* https://github.com/artman/Signals
+
 ### JSON
 * https://github.com/SwiftyJSON/SwiftyJSON
 ```swift
@@ -11,12 +27,6 @@ let json = JSON(data:string.dataUsingEncoding(NSUTF8StringEncoding)!)
 
 ### Core
 * https://github.com/pNre/ExSwift
-
-### Date
-* https://github.com/akosma/SwiftMoment
-
-### Time
-* https://github.com/radex/SwiftyTimer
 
 ### HTTP
 * https://github.com/Alamofire/Alamofire
@@ -32,6 +42,12 @@ println(bar)
 
 ### Colors
 * https://github.com/katopz/google-material-color-swift
+
+### Date
+* https://github.com/akosma/SwiftMoment
+
+### Time
+* https://github.com/radex/SwiftyTimer
 
 ### Helper
 * KZBlock
