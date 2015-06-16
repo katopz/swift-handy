@@ -1,6 +1,38 @@
 # swift-handy
 Handy Swift Helper belong here, Including my unfinish/use at risk helper.
+### Structure
+```
+/ProjectName
+	/m			# Models, Core Data schema etc
+	/v			# Shared views
+	/c			# Base view controllers
+	/s			# Services
+	/Library		# Anything that falls outside of the MVC pattern
+	/Support		# Categories and helpers
+	
+	/iPhone
+		/m		# Models, Core Data schema etc
+		/v		# Shared views
+		/c		# Base view controllers
+		/Library	# Anything that falls outside of the MVC pattern
+		/Support	# Categories and helpers
 
+	/iPad
+		/m		# Models, Core Data schema etc
+		/v		# Shared views
+		/c		# Base view controllers
+		/Library	# Anything that falls outside of the MVC pattern
+		/Support	# Categories and helpers
+		
+	/Other source		# Prefix headers, main.m
+	/Supporting file	# Info.plist
+	
+/Resources              	# Images, videos, .strings files
+/Vendor                 	# 3rd party dependencies not managed by CocoaPods
+/Scripts                	# All project-related scripts, typically executed as rake tasks.
+/Translation			# Holds all the base strings and localized
+/Pods				# Folder containing all dependency CocoaPods. 
+```
 ### CocoaPods
 * Create `Podfile`
 ```shell
