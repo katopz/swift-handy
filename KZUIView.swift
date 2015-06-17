@@ -26,4 +26,12 @@ extension UIView {
             self.alpha = 0
             }, completion: completion)
     }
+    
+    func removeAllSubViews()
+    {
+        for subView :AnyObject in self.subviews
+        {
+            subView.removeFromSuperview()
+        }
+    }
 }
