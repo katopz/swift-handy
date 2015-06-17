@@ -45,6 +45,11 @@ and then
 ```shell
 $ pod install
 ```
+### Async
+* https://github.com/inamiy/Await
+
+### Promise
+* https://github.com/mxcl/PromiseKit
 
 ### Signals
 * https://github.com/artman/Signals
