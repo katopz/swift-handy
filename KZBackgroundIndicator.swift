@@ -44,6 +44,7 @@ class KZBackgroundIndicator: UIView {
                         }, completion: {finished in
                             
                             if(self._isPlay) {
+                                self._isPlay = false
                                 self.startAnimation(target, color: self._new_backgroundColor!)
                             }
                     })
