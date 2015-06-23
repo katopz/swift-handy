@@ -9,12 +9,6 @@
 import Foundation
 import UIKit
 
-func println(object: Any) {
-    #if DEBUG
-        Swift.println(object)
-    #endif
-}
-
 class KZSwift {
     class var isSimulator: Bool {
         get {
