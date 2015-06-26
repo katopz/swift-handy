@@ -11,7 +11,7 @@ import UIKit
 
 class KZDialog {
     
-    // TODO : better Enums?
+    // TODO : better use Enums?
     static var SORRY = "Sorry"
     static var ALERT = "Alert"
     static var THANK_YOU = "Thank you"
@@ -22,23 +22,7 @@ class KZDialog {
     
     static var isPresented_internetOffline:Bool  = false
     
-    static func alert_noEmailClient() {
-        let alert = UIAlertView()
-        alert.title = SORRY
-        alert.message = NO_EMAIL_CLIENT_FOUND
-        alert.addButtonWithTitle(OK)
-        alert.show()
-    }
-    
-    static func alert_unknowServerError() {
-        let alert = UIAlertView()
-        alert.title = SORRY
-        alert.message = UNKNOWN_SERVER_ERROR
-        alert.addButtonWithTitle(OK)
-        alert.show()
-    }
-    
-    static func alert_internetOffline(vc:UIViewController) {
+    static func sorry_internetOffline(vc:UIViewController) {
         
         // already present
         if isPresented_internetOffline {
@@ -60,6 +44,10 @@ class KZDialog {
     
     static func thank(vc:UIViewController, message:String, handler: ((UIAlertAction) -> Void)?) {
         self.show(vc, title: ALERT, message: message, handler: handler)
+    }
+    
+    static func sorry(message:String) {
+        self.show(SORRY, message:message)
     }
     
     static func show(vc:UIViewController, title:String, message:String, handler: ((UIAlertAction) -> Void)?) {
