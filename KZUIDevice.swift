@@ -47,4 +47,13 @@ public extension UIDevice {
         }
         return DeviceList[identifier] ?? identifier
     }
+
+    var hasAllowedPushNotifications: Bool {
+        if UIApplication.sharedApplication().respondsToSelector("currentUserNotificationSettings") {
+            let types = UIApplication.sharedApplication().currentUserNotificationSettings().types
+            return (types & UIUserNotificationType.Alert) != UIUserNotificationType.None
+        } else {
+            return UIApplication.sharedApplication().isRegisteredForRemoteNotifications()
+        }
+    }
 }
