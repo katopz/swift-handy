@@ -14,11 +14,14 @@ class KZDialog {
     // TODO : better use Enums?
     static var SORRY = "Sorry"
     static var ALERT = "Alert"
+    static var WARNING = "Warning"
     static var THANK_YOU = "Thank you"
     static var OK = "OK"
     static var INTERNET_APPEAR_OFFLINE = "Internet connection appears to be offline."
     static var UNKNOWN_SERVER_ERROR = "Unknown server error."
     static var NO_EMAIL_CLIENT_FOUND = "No Email Client Found"
+    
+    static var PLEASE_TURN_ON_PUSH = "Please allow \"Push Notifications\" via \"Device Setting\" to get notify."
     
     static var isPresented_internetOffline:Bool  = false
     
@@ -38,19 +41,19 @@ class KZDialog {
         vc.presentViewController(alert, animated: true, completion: nil)
     }
     
-    static func alert(vc:UIViewController, message:String, handler: ((UIAlertAction) -> Void)?) {
+    static func alert(vc:UIViewController, message:String, handler: ((UIAlertAction!) -> Void)?) {
         self.show(vc, title: THANK_YOU, message: message, handler: handler)
     }
     
-    static func thank(vc:UIViewController, message:String, handler: ((UIAlertAction) -> Void)?) {
+    static func thank(vc:UIViewController, message:String, handler: ((UIAlertAction!) -> Void)?) {
         self.show(vc, title: ALERT, message: message, handler: handler)
     }
     
     static func sorry(message:String) {
         self.show(SORRY, message:message)
     }
-    
-    static func show(vc:UIViewController, title:String, message:String, handler: ((UIAlertAction) -> Void)?) {
+
+    static func show(vc:UIViewController, title:String, message:String, handler: ((UIAlertAction!) -> Void)?) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
         alert.addAction(UIAlertAction(title: OK, style: UIAlertActionStyle.Default, handler: handler))
         vc.presentViewController(alert, animated: true, completion: nil)
