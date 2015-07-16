@@ -16,4 +16,8 @@ extension UIImageView {
             }
         }
     }
+    
+    public func imageFromBundle(uriString: String) {
+        self.image = UIImage(contentsOfFile: uriString)
+    }
 }
