@@ -50,7 +50,7 @@ public extension UIDevice {
 
     var isAllowedPushNotifications: Bool {
         if UIApplication.sharedApplication().respondsToSelector("currentUserNotificationSettings") {
-            let types = UIApplication.sharedApplication().currentUserNotificationSettings().types
+            let types = UIApplication.sharedApplication().currentUserNotificationSettings()!.types
             return (types & UIUserNotificationType.Alert) != UIUserNotificationType.None
         } else {
             return UIApplication.sharedApplication().isRegisteredForRemoteNotifications()
