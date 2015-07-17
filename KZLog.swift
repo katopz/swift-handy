@@ -12,9 +12,9 @@ var isDebug = true
 func log(any1:Any, _ any2:Any? = nil) {
     if isDebug {
         if any2 != nil {
-            println(any1, any2)
+            print(any1, any2)
         } else {
-            println(any1)
+            print(any1)
         }
     }
 }
