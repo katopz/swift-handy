@@ -17,12 +17,8 @@ extension UIWebView {
     }
     
     public var contentOffset:CGPoint {
-       get {
-    //print("position:\(_currentWebView?.scrollView.contentOffset.x)")
-    //print("position:\(_currentWebView?.scrollView.contentOffset.y)")
-    
+       get {    
     /* Fetch the current selection and its pixel location */
-    let selected = self.stringByEvaluatingJavaScriptFromString("window.getSelection().toString();") ?? ""
     let positionString = self.stringByEvaluatingJavaScriptFromString("(function () {\n"
     // Fetch the selection
     + "var sel = window.getSelection();"
