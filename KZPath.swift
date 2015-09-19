@@ -10,8 +10,8 @@ import Foundation
 class KZPath {
     
     static func getBundleFilePath(fileFullName:String) -> String {
-        let fileName = fileFullName.stringByDeletingPathExtension
-        let fileExtention = fileFullName.pathExtension
+        let fileName = NSURL(fileURLWithPath: fileFullName).URLByDeletingPathExtension
+        let fileExtention = NSURL(fileURLWithPath: fileFullName).pathExtension
         
         return NSBundle.mainBundle().pathForResource(fileName, ofType: fileExtention) ?? fileFullName
     }
