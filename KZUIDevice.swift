@@ -37,21 +37,19 @@ public extension UIDevice {
         uname(&systemInfo)
         
         let machine = systemInfo.machine
-        let mirror = reflect(machine)
+        let mirror = Mirror(reflecting:machine)
         var identifier = ""
         
-        for i in 0..<mirror.count {
-            if let value = mirror[i].1.value as? Int8 where value != 0 {
-                identifier.append(UnicodeScalar(UInt8(value)))
-            }
+        for child in mirror.children where child.value as? Int8 != 0 {
+            identifier.append(UnicodeScalar(UInt8(child.value as! Int8)))
         }
         return DeviceList[identifier] ?? identifier
     }
-
+    
     var isAllowedPushNotifications: Bool {
         if UIApplication.sharedApplication().respondsToSelector("currentUserNotificationSettings") {
             let types = UIApplication.sharedApplication().currentUserNotificationSettings()!.types
-            return (types & UIUserNotificationType.Alert) != UIUserNotificationType.None
+            return (types.intersect(UIUserNotificationType.Alert)) != UIUserNotificationType.None
         } else {
             return UIApplication.sharedApplication().isRegisteredForRemoteNotifications()
         }
