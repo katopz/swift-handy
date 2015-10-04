@@ -19,6 +19,8 @@ private let DeviceList = [
     /* iPhone 5S */       "iPhone6,1": "iPhone 5S", "iPhone6,2": "iPhone 5S",
     /* iPhone 6 */        "iPhone7,2": "iPhone 6",
     /* iPhone 6 Plus */   "iPhone7,1": "iPhone 6 Plus",
+    /* iPhone 6S */       "iPhone8,1": "iPhone 6S",
+    /* iPhone 6S Plus */  "iPhone8,2": "iPhone 6S Plus",
     /* iPad 2 */          "iPad2,1": "iPad 2", "iPad2,2": "iPad 2", "iPad2,3": "iPad 2", "iPad2,4": "iPad 2",
     /* iPad 3 */          "iPad3,1": "iPad 3", "iPad3,2": "iPad 3", "iPad3,3": "iPad 3",
     /* iPad 4 */          "iPad3,4": "iPad 4", "iPad3,5": "iPad 4", "iPad3,6": "iPad 4",
