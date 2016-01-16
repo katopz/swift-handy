@@ -1,8 +1,8 @@
 //
 //  KZUIView.swift
-//  EnvatoMiner
+//  swift-handy
 //
-//  Created by Todsaporn Banjerdkit on 6/13/15.
+//  Created by katopz on 6/13/15.
 //  Copyright (c) 2015 Debokeh. All rights reserved.
 //
 

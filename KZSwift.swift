@@ -2,7 +2,7 @@
 //  KZSwift.swift
 //  swift-handy
 //
-//  Created by Todsaporn Banjerdkit on 6/9/15.
+//  Created by katopz on 6/9/15.
 //  Copyright (c) 2015 Debokeh. All rights reserved.
 //
 

@@ -1,8 +1,8 @@
 //
 //  KZUIDevice.swift
-//  EnvatoMiner
+//  swift-handy
 //
-//  Created by Todsaporn Banjerdkit on 7/16/15.
+//  Created by katopz on 7/16/15.
 //  Copyright (c) 2015 Debokeh. All rights reserved.
 //  http://stackoverflow.com/questions/26028918/ios-how-to-determine-iphone-model-in-swift/27903805#27903805
 

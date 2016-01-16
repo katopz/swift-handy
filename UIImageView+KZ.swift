@@ -1,8 +1,9 @@
 //
 //  KZUIImageView.swift
+//  swift-handy
 //
-//  Created by Pi R Square on 7/13/2558 BE.
-//  Copyright © 2558 pirsquare. All rights reserved.
+//  Created by katopz on 7/13/2558 BE.
+//  Copyright © 2558 Debokeh. All rights reserved.
 //
 
 import Foundation

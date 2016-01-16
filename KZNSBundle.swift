@@ -2,7 +2,7 @@
 //  KZNSBundle.swift
 //	swift-handy
 //
-//  Created by Todsaporn Banjerdkit on 5/9/15.
+//  Created by katopz on 5/9/15.
 //  Copyright (c) 2015 Debokeh. All rights reserved.
 //
 
