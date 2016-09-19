@@ -9,7 +9,7 @@
 import Foundation
 
 extension String {
-    func replace(target:String, with:String) -> String {
-        return self.componentsSeparatedByString(target).joinWithSeparator(with)
+    func replace(_ target:String, with:String) -> String {
+        return self.components(separatedBy: target).joined(separator: with)
     }
 }

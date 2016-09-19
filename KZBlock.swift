@@ -11,5 +11,5 @@ import Foundation
 class KZBlock<T>  {
     let f : T
     init (_ f: T){ self.f = f }
-    var casted: AnyObject { get { return unsafeBitCast(f, AnyObject.self) } }
+    var casted: AnyObject { get { return unsafeBitCast(f, to: AnyObject.self) } }
 }

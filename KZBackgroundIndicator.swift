@@ -16,7 +16,7 @@ class KZBackgroundIndicator: UIView {
     
     static var _isPlay:Bool = false
     
-    static func startAnimation(target:UIView, color:UIColor) {
+    static func startAnimation(_ target:UIView, color:UIColor) {
         
         // already play
         if(_isPlay) {
@@ -31,14 +31,14 @@ class KZBackgroundIndicator: UIView {
         
         _isPlay = true
         
-        UIView.animateWithDuration(1, delay: 0, options:.CurveEaseOut, animations: {
+        UIView.animate(withDuration: 1, delay: 0, options:.curveEaseOut, animations: {
             
             target.backgroundColor = self._new_backgroundColor
             
             }, completion: {finished in
                 
                 if(self._isPlay) {
-                    UIView.animateWithDuration(0.5, delay: 0, options:.CurveEaseOut, animations: {
+                    UIView.animate(withDuration: 0.5, delay: 0, options:.curveEaseOut, animations: {
                         
                         target.backgroundColor = self._maps[target]
                         
@@ -53,7 +53,7 @@ class KZBackgroundIndicator: UIView {
         })
     }
     
-    static func stopAnimation(target:UIView) {
+    static func stopAnimation(_ target:UIView) {
         
         _isPlay = false
         
@@ -61,7 +61,7 @@ class KZBackgroundIndicator: UIView {
             return
         }
         
-        UIView.animateWithDuration(0.5, delay: 0, options:.CurveEaseOut, animations: {
+        UIView.animate(withDuration: 0.5, delay: 0, options:.curveEaseOut, animations: {
             
             target.backgroundColor = self._maps[target]
             

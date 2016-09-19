@@ -12,14 +12,14 @@ extension UIWebView {
     
     public var selectedString:String {
         get {
-            return self.stringByEvaluatingJavaScriptFromString("window.getSelection().toString()") ?? ""
+            return self.stringByEvaluatingJavaScript(from: "window.getSelection().toString()") ?? ""
         }
     }
     
     public var contentOffset:CGPoint {
        get {    
     /* Fetch the current selection and its pixel location */
-    let positionString = self.stringByEvaluatingJavaScriptFromString("(function () {\n"
+    let positionString = self.stringByEvaluatingJavaScript(from: "(function () {\n"
     // Fetch the selection
     + "var sel = window.getSelection();"
     + "var node = sel.anchorNode;"
@@ -65,7 +65,7 @@ extension UIWebView {
     + "return \"{\" + p.x + \", \" + p.y + \"}\";"
     + "})();")
     var position = CGPointFromString(positionString!)
-    position = self.convertPoint(position, fromView: self)
+    position = self.convert(position, from: self)
     
     return position
     }

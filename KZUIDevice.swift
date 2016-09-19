@@ -5,6 +5,7 @@
 //  Created by katopz on 7/16/15.
 //  Copyright (c) 2015 Debokeh. All rights reserved.
 //  http://stackoverflow.com/questions/26028918/ios-how-to-determine-iphone-model-in-swift/27903805#27903805
+// https://github.com/dennisweissmann/DeviceKit/blob/swift-2.3-unsupported/Source/Device.swift
 
 import Foundation
 
@@ -21,6 +22,12 @@ private let DeviceList = [
     /* iPhone 6 Plus */   "iPhone7,1": "iPhone 6 Plus",
     /* iPhone 6S */       "iPhone8,1": "iPhone 6S",
     /* iPhone 6S Plus */  "iPhone8,2": "iPhone 6S Plus",
+                          
+    /* iPhone 7 */        "iPhone9,1": "iPhone 7",
+    /* iPhone 7 Plus */   "iPhone9,2": "iPhone 7 Plus",
+    /* iPhone 7 */        "iPhone9,3": "iPhone 7",
+    /* iPhone 7 Plus */   "iPhone9,4": "iPhone 7 Plus",
+                         
     /* iPad 2 */          "iPad2,1": "iPad 2", "iPad2,2": "iPad 2", "iPad2,3": "iPad 2", "iPad2,4": "iPad 2",
     /* iPad 3 */          "iPad3,1": "iPad 3", "iPad3,2": "iPad 3", "iPad3,3": "iPad 3",
     /* iPad 4 */          "iPad3,4": "iPad 4", "iPad3,5": "iPad 4", "iPad3,6": "iPad 4",
@@ -43,17 +50,18 @@ public extension UIDevice {
         var identifier = ""
         
         for child in mirror.children where child.value as? Int8 != 0 {
-            identifier.append(UnicodeScalar(UInt8(child.value as! Int8)))
+            identifier.append(String(UnicodeScalar(UInt8(child.value as! Int8))))
         }
         return DeviceList[identifier] ?? identifier
     }
     
     var isAllowedPushNotifications: Bool {
-        if UIApplication.sharedApplication().respondsToSelector("currentUserNotificationSettings") {
-            let types = UIApplication.sharedApplication().currentUserNotificationSettings()!.types
-            return (types.intersect(UIUserNotificationType.Alert)) != UIUserNotificationType.None
+        if UIApplication.shared.responds(to: #selector(getter: UIApplication.currentUserNotificationSettings)) {
+            let types = UIApplication.shared.currentUserNotificationSettings!.types
+            let isAllowed = (types.intersection(UIUserNotificationType.alert)) != UIUserNotificationType()
+            return isAllowed;
         } else {
-            return UIApplication.sharedApplication().isRegisteredForRemoteNotifications()
+            return UIApplication.shared.isRegisteredForRemoteNotifications
         }
     }
 }

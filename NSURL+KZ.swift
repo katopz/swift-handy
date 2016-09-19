@@ -9,13 +9,13 @@
 import Foundation
 import UIKit
 
-extension NSURL
+extension URL
 {
-    static func openURLString(urlString:String?)
+    static func openURLString(_ urlString:String?)
     {
         if(urlString != nil)
         {
-            UIApplication.sharedApplication().openURL(NSURL(string: urlString!)!)
+            UIApplication.shared.openURL(URL(string: urlString!)!)
         } else {
             //println(" ! NSURL.openURLString : nil" )
         }

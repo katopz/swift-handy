@@ -18,7 +18,7 @@ class KZSwift {
     
     class var isH480: Bool {
         get {
-            return UIScreen.mainScreen().bounds.height == 480
+            return UIScreen.main.bounds.height == 480
         }
     }
 }

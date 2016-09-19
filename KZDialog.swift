@@ -25,7 +25,7 @@ class KZDialog {
     
     static var isPresented_internetOffline:Bool  = false
     
-    static func sorry_internetOffline(vc:UIViewController) {
+    static func sorry_internetOffline(_ vc:UIViewController) {
         
         // already present
         if isPresented_internetOffline {
@@ -34,36 +34,36 @@ class KZDialog {
         
         isPresented_internetOffline = true
         
-        let alert = UIAlertController(title: SORRY, message: INTERNET_APPEAR_OFFLINE, preferredStyle: UIAlertControllerStyle.Alert)
-        alert.addAction(UIAlertAction(title: OK, style: UIAlertActionStyle.Default, handler: { action in
+        let alert = UIAlertController(title: SORRY, message: INTERNET_APPEAR_OFFLINE, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: OK, style: UIAlertActionStyle.default, handler: { action in
             self.isPresented_internetOffline = false
         }))
-        vc.presentViewController(alert, animated: true, completion: nil)
+        vc.present(alert, animated: true, completion: nil)
     }
     
-    static func alert(vc:UIViewController, message:String, handler: ((UIAlertAction!) -> Void)?) {
+    static func alert(_ vc:UIViewController, message:String, handler: ((UIAlertAction?) -> Void)?) {
         self.show(vc, title: THANK_YOU, message: message, handler: handler)
     }
     
-    static func thank(vc:UIViewController, message:String, handler: ((UIAlertAction!) -> Void)?) {
+    static func thank(_ vc:UIViewController, message:String, handler: ((UIAlertAction?) -> Void)?) {
         self.show(vc, title: ALERT, message: message, handler: handler)
     }
     
-    static func sorry(message:String) {
+    static func sorry(_ message:String) {
         self.show(SORRY, message:message)
     }
 
-    static func show(vc:UIViewController, title:String, message:String, handler: ((UIAlertAction!) -> Void)?) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
-        alert.addAction(UIAlertAction(title: OK, style: UIAlertActionStyle.Default, handler: handler))
-        vc.presentViewController(alert, animated: true, completion: nil)
+    static func show(_ vc:UIViewController, title:String, message:String, handler: ((UIAlertAction?) -> Void)?) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: OK, style: UIAlertActionStyle.default, handler: handler))
+        vc.present(alert, animated: true, completion: nil)
     }
     
-    static func show(title:String, message:String) {
+    static func show(_ title:String, message:String) {
         let alert = UIAlertView()
         alert.title = title
         alert.message = message
-        alert.addButtonWithTitle(OK)
+        alert.addButton(withTitle: OK)
         alert.show()
     }
 }

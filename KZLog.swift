@@ -9,7 +9,7 @@
 import Foundation
 
 var isDebug = true
-func log(any1:Any, _ any2:Any? = nil) {
+func log(_ any1:Any, _ any2:Any? = nil) {
     if isDebug {
         if any2 != nil {
             print(any1, any2)

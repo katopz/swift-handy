@@ -10,24 +10,24 @@ import Foundation
 
 class KZPacker {
 
-    private static var _defaults = NSUserDefaults.standardUserDefaults()
+    fileprivate static var _defaults = UserDefaults.standard
     
-    static func pack(key:String, _ data:AnyObject) {
-        _defaults.setObject(NSKeyedArchiver.archivedDataWithRootObject(data), forKey: key)
+    static func pack(_ key:String, _ data:AnyObject) {
+        _defaults.set(NSKeyedArchiver.archivedData(withRootObject: data), forKey: key)
         _defaults.synchronize()
     }
     
-    static func unpack(key:String) -> AnyObject? {
+    static func unpack(_ key:String) -> AnyObject? {
         
-        let data = _defaults.objectForKey(key) as? NSData
+        let data = _defaults.object(forKey: key) as? Data
         if data != nil {
-            return NSKeyedUnarchiver.unarchiveObjectWithData(data!)
+            return NSKeyedUnarchiver.unarchiveObject(with: data!) as AnyObject?
         } else {
-            return data
+            return data as AnyObject?
         }
     }
     
-    static func remove(key:String) {
-        _defaults.removeObjectForKey(key)
+    static func remove(_ key:String) {
+        _defaults.removeObject(forKey: key)
     }
 }

@@ -11,19 +11,19 @@ import UIKit
 
 extension UIView {
     
-    func doAlpha(value:Double) -> UIView {
+    func doAlpha(_ value:Double) -> UIView {
         self.alpha = CGFloat(value)
         return self
     }
     
-    func fadeIn(duration:Double, delay: Double = 0, completion: ((Bool) -> Void)? = nil) {
-        UIView.animateWithDuration(duration, delay: delay, options:.CurveEaseOut, animations: {
+    func fadeIn(_ duration:Double, delay: Double = 0, completion: ((Bool) -> Void)? = nil) {
+        UIView.animate(withDuration: duration, delay: delay, options:.curveEaseOut, animations: {
             self.alpha = 1
         }, completion: completion)
     }
     
-    func fadeOut(duration:Double, delay: Double = 0, completion: ((Bool) -> Void)? = nil) {
-        UIView.animateWithDuration(duration, delay: delay, options:.CurveEaseOut, animations: {
+    func fadeOut(_ duration:Double, delay: Double = 0, completion: ((Bool) -> Void)? = nil) {
+        UIView.animate(withDuration: duration, delay: delay, options:.curveEaseOut, animations: {
             self.alpha = 0
             }, completion: completion)
     }

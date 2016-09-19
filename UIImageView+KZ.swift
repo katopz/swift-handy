@@ -8,20 +8,24 @@
 
 import Foundation
 extension UIImageView {
-    public func imageFromUrl(urlString: String) {
-        if let url = NSURL(string: urlString) {
-            let request = NSURLRequest(URL: url)
-            NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) {
-                (response: NSURLResponse?, data: NSData?, error: NSError?) -> Void in
-                if data == nil {
-                    return
-                }
-                self.image = UIImage(data: data!)
+    
+    func getDataFromUrl(url: URL, completion: @escaping (_ data: Data?, _  response: URLResponse?, _ error: Error?) -> Void) {
+        URLSession.shared.dataTask(with: url) {
+            (data, response, error) in
+            completion(data, response, error)
+            }.resume()
+    }
+    
+    public func imageFromUrl(url: URL) {
+        getDataFromUrl(url: url) { (data, response, error)  in
+            DispatchQueue.main.sync() { () -> Void in
+                guard let data = data, error == nil else { return }
+                self.image = UIImage(data: data)
             }
         }
     }
     
-    public func imageFromBundle(uriString: String) {
+    public func imageFromBundle(_ uriString: String) {
         self.image = UIImage(contentsOfFile: uriString)
     }
 }
