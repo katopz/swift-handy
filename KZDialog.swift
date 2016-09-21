@@ -50,7 +50,7 @@ class KZDialog {
     }
     
     static func sorry(_ message:String) {
-        self.show(SORRY, message:message)
+        self.show(title:SORRY, message:message)
     }
 
     static func show(_ vc:UIViewController, title:String, message:String, handler: ((UIAlertAction?) -> Void)?) {
@@ -59,11 +59,13 @@ class KZDialog {
         vc.present(alert, animated: true, completion: nil)
     }
     
-    static func show(_ title:String, message:String) {
-        let alert = UIAlertView()
-        alert.title = title
-        alert.message = message
-        alert.addButton(withTitle: OK)
-        alert.show()
+    static func show(title:String, message:String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in
+            alertController.dismiss(animated: true, completion: nil)
+        }
+        alertController.addAction(okAction)
+        
+        UIApplication.shared.keyWindow?.rootViewController?.present(alertController, animated: true, completion: nil)
     }
 }

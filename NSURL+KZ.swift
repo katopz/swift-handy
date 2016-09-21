@@ -15,7 +15,7 @@ extension URL
     {
         if(urlString != nil)
         {
-            UIApplication.shared.openURL(URL(string: urlString!)!)
+            UIApplication.shared.open(URL(string: urlString!)!, options: [:], completionHandler: nil)
         } else {
             //println(" ! NSURL.openURLString : nil" )
         }
