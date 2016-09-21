@@ -66,6 +66,10 @@ class KZDialog {
         }
         alertController.addAction(okAction)
         
-        UIApplication.shared.keyWindow?.rootViewController?.present(alertController, animated: true, completion: nil)
+        var viewController = UIApplication.shared.keyWindow?.rootViewController
+        while ((viewController?.presentedViewController) != nil) {
+            viewController = viewController?.presentedViewController;
+        }
+        viewController?.present(alertController, animated: true, completion: nil)
     }
 }
