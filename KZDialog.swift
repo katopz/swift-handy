@@ -11,17 +11,31 @@ import UIKit
 
 class KZDialog {
     
-    // TODO : better use Enums?
-    static var SORRY = "Sorry"
-    static var ALERT = "Alert"
-    static var WARNING = "Warning"
-    static var THANK_YOU = "Thank you"
-    static var OK = "OK"
-    static var INTERNET_APPEAR_OFFLINE = "Internet connection appears to be offline."
-    static var UNKNOWN_SERVER_ERROR = "Unknown server error."
-    static var NO_EMAIL_CLIENT_FOUND = "No Email Client Found"
+    // MARK: - Const
     
-    static var PLEASE_TURN_ON_PUSH = "Please allow \"Push Notifications\" via \"Device Setting\" to get notify."
+    // TODO : better use Enums?
+    static let SORRY = "Sorry"
+    static let ALERT = "Alert"
+    static let WARNING = "Warning"
+    static let THANK_YOU = "Thank you"
+    static let OK = "OK"
+    static let INTERNET_APPEAR_OFFLINE = "Internet connection appears to be offline."
+    static let UNKNOWN_SERVER_ERROR = "Unknown server error."
+    static let NO_EMAIL_CLIENT_FOUND = "No Email Client Found"
+    
+    static let PLEASE_TURN_ON_PUSH = "Please allow \"Push Notifications\" via \"Device Setting\" to get notify."
+    
+    // MARK: -  present anywhere
+    
+    static private func _present(_ alertController:UIAlertController) {
+        var viewController = UIApplication.shared.keyWindow?.rootViewController
+        while ((viewController?.presentedViewController) != nil) {
+            viewController = viewController?.presentedViewController;
+        }
+        viewController?.present(alertController, animated: true, completion: nil)
+    }
+    
+    // MARK: - Dialogs
     
     static var isPresented_internetOffline:Bool  = false
     
@@ -61,15 +75,22 @@ class KZDialog {
     
     static func show(title:String, message:String) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
-        let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in
-            alertController.dismiss(animated: true, completion: nil)
-        }
-        alertController.addAction(okAction)
+        alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler:nil))
         
-        var viewController = UIApplication.shared.keyWindow?.rootViewController
-        while ((viewController?.presentedViewController) != nil) {
-            viewController = viewController?.presentedViewController;
+        _present(alertController)
+    }
+    
+    static func sheet(title:String, message:String, titles:[String?], handlers:[((UIAlertAction?) -> Void)?], cancelable:Bool = true) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.actionSheet)
+        
+        for (index, title) in titles.enumerated() {
+            alertController.addAction(UIAlertAction(title: title, style: UIAlertActionStyle.default, handler: handlers[index]))
         }
-        viewController?.present(alertController, animated: true, completion: nil)
+        
+        if(cancelable){
+            alertController.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))
+        }
+        
+        _present(alertController)
     }
 }
