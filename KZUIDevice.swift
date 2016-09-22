@@ -5,11 +5,12 @@
 //  Created by katopz on 7/16/15.
 //  Copyright (c) 2015 Debokeh. All rights reserved.
 //  http://stackoverflow.com/questions/26028918/ios-how-to-determine-iphone-model-in-swift/27903805#27903805
-// https://github.com/dennisweissmann/DeviceKit/blob/swift-2.3-unsupported/Source/Device.swift
+//  https://github.com/dennisweissmann/DeviceKit/blob/swift-2.3-unsupported/Source/Device.swift
+//  http://stackoverflow.com/questions/37956482/registering-for-push-notifications-in-xcode-8-swift-3-0
 
 import Foundation
-
 import UIKit
+import UserNotifications
 
 private let DeviceList = [
     /* iPod 5 */          "iPod5,1": "iPod Touch 5",
@@ -56,12 +57,35 @@ public extension UIDevice {
     }
     
     var isAllowedPushNotifications: Bool {
-        if UIApplication.shared.responds(to: #selector(getter: UIApplication.currentUserNotificationSettings)) {
-            let types = UIApplication.shared.currentUserNotificationSettings!.types
-            let isAllowed = (types.intersection(UIUserNotificationType.alert)) != UIUserNotificationType()
-            return isAllowed;
+        if #available(iOS 10.0, *) {
+            // iOS 10+
+            var isAllowed = false
+            UNUserNotificationCenter.current().getNotificationSettings(){ (setttings) in
+                switch setttings.soundSetting{
+                case .enabled:
+                    print("enabled sound setting")
+                    isAllowed = true
+                    break;
+                case .disabled:
+                    print("setting has been disabled")
+                    isAllowed = false
+                    break;
+                case .notSupported:
+                    print("something vital went wrong here")
+                    isAllowed = false
+                    break;
+                }
+            }
+            return isAllowed
         } else {
-            return UIApplication.shared.isRegisteredForRemoteNotifications
+            // iOS 8, 9
+            if UIApplication.shared.responds(to: #selector(getter: UIApplication.currentUserNotificationSettings)) {
+                let types = UIApplication.shared.currentUserNotificationSettings!.types
+                let isAllowed = (types.intersection(UIUserNotificationType.alert)) != UIUserNotificationType()
+                return isAllowed;
+            } else {
+                return UIApplication.shared.isRegisteredForRemoteNotifications
+            }
         }
     }
 }
