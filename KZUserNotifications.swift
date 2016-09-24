@@ -15,6 +15,15 @@ import UserNotifications
 public extension UIDevice {
     
     static func checkAllowedPushNotifications(_ handler:@escaping ((Bool!) -> Void)) {
+        
+        /*
+         //For test
+        if (KZSwift.isSimulator) {
+            handler(false)
+            return;
+         }
+         */
+        
         if #available(iOS 10.0, *) {
             // iOS 10+
             UNUserNotificationCenter.current().getNotificationSettings { settings in
