@@ -1,6 +1,6 @@
 //
 //  KZUserNotifications.swift
-//  EnvatoMiner
+//  swift-handy
 //
 //  Created by Todsaporn Banjerdkit on 9/23/16.
 //  Copyright © 2016 Debokeh. All rights reserved.

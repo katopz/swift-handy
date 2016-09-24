@@ -1,5 +1,5 @@
 //
-//  NSString+KZ.swift
+//  KZString.swift
 //  swift-handy
 //
 //  Created by katopz on 1/16/2559 BE.

@@ -1,5 +1,5 @@
 //
-//  NSURL+kz.swift
+//  KZURL.swift
 //  swift-handy
 //
 //  Created by katopz on 6/1/15.
@@ -15,7 +15,11 @@ extension URL
     {
         if(urlString != nil)
         {
-            UIApplication.shared.open(URL(string: urlString!)!, options: [:], completionHandler: nil)
+            if #available(iOS 10.0, *) {
+                UIApplication.shared.open(URL(string: urlString!)!, options: [:], completionHandler: nil)
+            } else {
+                UIApplication.shared.openURL(URL(string: urlString!)!)
+            }
         } else {
             //println(" ! NSURL.openURLString : nil" )
         }
