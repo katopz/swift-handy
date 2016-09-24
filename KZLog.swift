@@ -12,7 +12,7 @@ var isDebug = true
 func log(_ any1:Any, _ any2:Any? = nil) {
     if isDebug {
         if any2 != nil {
-            print("[log]\(any1)", any2)
+            print("[log]\(any1)", "\(any2)")
         } else {
             print("[log]\(any1)")
         }
